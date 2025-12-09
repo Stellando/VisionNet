@@ -10,6 +10,7 @@
 #include <functional>
 #include <string>
 #include <map>
+#include "structure.h"
 
 using namespace std;
 
@@ -22,34 +23,12 @@ struct FunctionInfo {
     string description;                             // 函數描述
 };
 
-namespace TestFunctions {
+namespace CEC22Functions {
+    // 獲取 CEC2022 函數資訊
+    FunctionInfo getFunctionInfo(int funcId, int dimension);
     
-    // ==================== 單峰函數 ====================
-    double Sphere(const vector<double>& x);        // F1: Sphere 函數
-    double Schwefel222(const vector<double>& x);   // F2: Schwefel 2.22
-    double Schwefel221(const vector<double>& x);   // F3: Schwefel 2.21
-    double Rosenbrock(const vector<double>& x);    // F4: Rosenbrock 函數
-    double Step(const vector<double>& x);          // F5: Step 函數
-    
-    // ==================== 多峰函數 ====================
-    double Schwefel(const vector<double>& x);      // F6: Schwefel 函數
-    double Rastrigin(const vector<double>& x);     // F7: Rastrigin 函數
-    double Ackley(const vector<double>& x);        // F8: Ackley 函數
-    double Griewank(const vector<double>& x);      // F9: Griewank 函數
-    double Penalized1(const vector<double>& x);    // F10: Penalized 函數
-    
-    // ==================== CEC 風格函數 ====================
-    double ShiftedSphere(const vector<double>& x);    // F11: 位移 Sphere
-    double RotatedElliptic(const vector<double>& x);  // F12: 旋轉橢圓
-    
-    // ==================== 複合函數 ====================
-    double Composite1(const vector<double>& x);       // F13: 複合函數 1
-    double Composite2(const vector<double>& x);       // F14: 複合函數 2
-    
-    // ==================== 輔助函數 ====================
-    FunctionInfo getFunctionInfo(const string& funcName);  // 獲取函數資訊
-    vector<string> getAvailableFunctions();                // 獲取所有可用函數列表
-    
-} // namespace TestFunctions
+    // 執行 CEC2022 評估
+    double evaluate(int funcId, const vector<double>& x);
+}
 
 #endif // FUNCTIONS_H
